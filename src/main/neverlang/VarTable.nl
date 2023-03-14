@@ -1,6 +1,6 @@
 endemic slice VarTable {
     declare {
-        VarTable: java.util.HashMap;
+        VarTable: javautils.VarTable;
     }
 
 

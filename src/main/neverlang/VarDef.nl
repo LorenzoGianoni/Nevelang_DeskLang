@@ -1,7 +1,7 @@
 module VarDef {
 
     imports {
-        java.util.HashMap;
+        javautils.VarTable;
     }
 
     reference syntax {

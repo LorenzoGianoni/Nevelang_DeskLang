@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'neverlang' version '0.8-SNAPSHOT' //'0.7'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+wrapper {
+    gradleVersion = '7.5.1'
+}
+
+def neverlangVersion = '2.5.5-SNAPSHOT' // "2.5.4"
+neverlang.version = neverlangVersion
+
+repositories {
+    maven {
+        url "https://maven.adapt-lab.di.unimi.it/neverlang/releases"
+    }
+    maven {
+        url "https://maven.adapt-lab.di.unimi.it/neverlang/snapshots"
+    }
+
+    mavenCentral()
+}
+
+dependencies {
+    implementation "it.unimi.di.adaptlab:neverlang-core:${neverlangVersion}"
+    implementation "it.unimi.di.adaptlab:neverlang-dexter:${neverlangVersion}"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def resourceDir = sourceSets.main.resources.srcDirs.first().absolutePath
+
+task runtNlg(type: neverlang.execClass) {
+    classpath = sourceSets.main.runtimeClasspath + sourceSets.getByName("nlg").runtimeClasspath
+    languageMainClass = "addlang.v1.AddLang"
+    languageArgs = ["${resourceDir}/test.addlang"]
+}

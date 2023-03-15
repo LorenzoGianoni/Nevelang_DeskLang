@@ -8,4 +8,9 @@ public class VarTable extends HashMap{
     public Object put(Object key, Object value) {
         return super.put(key, value);
     }
+
+    @Override
+    public Object get(Object key) {
+        return super.get(key);
+    }
 }

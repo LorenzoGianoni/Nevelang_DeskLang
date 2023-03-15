@@ -1,9 +1,9 @@
 module Program {
     reference syntax {
-        prog: Program <-- VarInitSect;
+        prog: Program <-- PrintSect VarInitSect;
     }
 
-    role(evaluation){
+    role(varDef){
         prog: .{
             System.out.println($$VarTable);
         }.

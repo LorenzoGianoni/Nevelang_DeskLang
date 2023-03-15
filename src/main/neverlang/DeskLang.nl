@@ -2,11 +2,12 @@ language DeskLang {
 
     slices
         VarDef
+        PrintSect
         Program
 
     endemic slices
         VarTable
 
-    roles syntax < evaluation
+    roles syntax < varDef < print
 
 }

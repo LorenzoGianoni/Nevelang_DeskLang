@@ -39,6 +39,6 @@ def resourceDir = sourceSets.main.resources.srcDirs.first().absolutePath
 
 task runtNlg(type: neverlang.execClass) {
     classpath = sourceSets.main.runtimeClasspath + sourceSets.getByName("nlg").runtimeClasspath
-    languageMainClass = "addlang.v1.AddLang"
-    languageArgs = ["${resourceDir}/test.addlang"]
+    languageMainClass = "DeskLang"
+    languageArgs = ["${resourceDir}/Test.dl"]
 }
